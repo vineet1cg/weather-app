@@ -27,7 +27,6 @@ body::before {
 }
 .main-content {
   width: 300px;
-  height: 496px;
   z-index: 1;
   background: linear-gradient(
     to top,
@@ -37,6 +36,8 @@ body::before {
   border-radius: 12px;
   backdrop-filter: blur(100px);
   padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
 /* utilities */
 .regular-txt{
@@ -84,6 +85,22 @@ body::before {
   background-size: 100% 100%;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M12 11.5A2.5 2.5 0 0 1 9.5 9A2.5 2.5 0 0 1 12 6.5A2.5 2.5 0 0 1 14.5 9a2.5 2.5 0 0 1-2.5 2.5M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7'/%3E%3C/svg%3E");
 }
+.mdi--water-drop {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M12 20a6 6 0 0 1-6-6c0-4 6-10.75 6-10.75S18 10 18 14a6 6 0 0 1-6 6'/%3E%3C/svg%3E");
+}
+.solar--wind-bold {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' fill-rule='evenodd' d='M6.25 5.5A3.25 3.25 0 1 1 9.5 8.75H3a.75.75 0 0 1 0-1.5h6.5A1.75 1.75 0 1 0 7.75 5.5v.357a.75.75 0 1 1-1.5 0zm8 2a4.25 4.25 0 1 1 4.25 4.25H2a.75.75 0 0 1 0-1.5h16.5a2.75 2.75 0 1 0-2.75-2.75V8a.75.75 0 0 1-1.5 0zm-11 6.5a.75.75 0 0 1 .75-.75h14.5a4.25 4.25 0 1 1-4.25 4.25V17a.75.75 0 0 1 1.5 0v.5a2.75 2.75 0 1 0 2.75-2.75H4a.75.75 0 0 1-.75-.75' clip-rule='evenodd'/%3E%3C/svg%3E");
+}
 /* icon end */
 /* input end */
 /* input end */
@@ -105,4 +122,82 @@ body::before {
     display: flex;
     gap: 6px;
     align-items: center;
+}
+.weather-summary-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.weather-summary-image{
+    height: 120px;
+    width: 120px;
+}
+.weather-summary-info{
+    text-align: end;
+}
+/* Forecast carousel styles */
+.forecast-container{
+  margin-top: 15px;
+  margin-left: -20px;
+  margin-right: -20px;
+  margin-bottom: -20px;
+  padding: 0 20px 20px 20px;
+}
+.forecast-list{
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 12px 0;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.1) transparent;
+}
+.forecast-list::-webkit-scrollbar{
+  height: 6px;
+}
+.forecast-list::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,0.15);
+  border-radius: 3px;
+}
+.forecast-list::-webkit-scrollbar-track{
+  background: transparent;
+}
+.forecast-card{
+  min-width: 70px;
+  flex: 0 0 auto;
+  background: rgba(0,0,0,0.25);
+  border-radius: 10px;
+  padding: 12px 10px;
+  text-align: center;
+  backdrop-filter: blur(6px);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.forecast-date{
+  font-size: 11px;
+  color: rgba(255,255,255,0.85);
+  font-weight: 600;
+  line-height: 1.2;
+}
+.forecast-icon{
+  width: 40px;
+  height: 40px;
+}
+.forecast-temp{
+  font-weight: 700;
+  font-size: 14px;
+  margin-top: 2px;
+}
+/* allow nice dragging cursor on desktop */
+.forecast-list:active .forecast-card{
+  cursor: grabbing;
+}
+
+@media (min-width:420px){
+  .main-content{width:360px}
 }
